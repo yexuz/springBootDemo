@@ -18,10 +18,10 @@ import java.util.List;
 @RequestMapping("/book")
 public class ReadingListController {
 
-//    @Autowired
+    //    @Autowired
     private ReadingListRepository readingListRepository;
 
-//    @Autowired
+    //    @Autowired
     private BookService bookService;
 
     @Autowired
@@ -40,7 +40,7 @@ public class ReadingListController {
         return "readingList";
     }
 
-    @RequestMapping(value="/{reader}", method=RequestMethod.POST)
+    @RequestMapping(value = "/{reader}", method = RequestMethod.POST)
     @ApiOperation(value = "save book", httpMethod = "POST")
     public String addToReadingList(@PathVariable("reader") String reader, Book book) {
         book.setReader(reader);
@@ -51,9 +51,19 @@ public class ReadingListController {
     @RequestMapping("/queryPageable")
     @ApiOperation(value = "Query books by page", httpMethod = "GET")
     @ResponseBody
-    public List<Book> queryPageable(@RequestParam(value = "page",defaultValue = "0") int curPage , @RequestParam(value = "size",defaultValue = "2") int size, String reader){
+    public List<Book> queryPageable(@RequestParam(value = "page", defaultValue = "0") int curPage, @RequestParam(value = "size", defaultValue = "2") int size, String reader) {
         List<Book> books = bookService.queryPageable(curPage, size, reader);
 
         return books;
     }
+
+
+//    @RequestMapping("/readingList")
+//    public String readingList(Model model) {
+//        List<Book> readingList = readingListRepository.findByReader(reader);
+//        if (readingList != null) {
+//            model.addAttribute("books", readingList);
+//        }
+//        return "readingList";
+//    }
 }
