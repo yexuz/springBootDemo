@@ -11,7 +11,6 @@ public class TestController {
 
     @RequestMapping("/home")
     @ApiOperation(value = "home", httpMethod = "GET")
-    @ResponseBody
     public String home(ModelMap modelMap) {
         System.out.println(modelMap.get("author"));
         int i = 1 / 0;

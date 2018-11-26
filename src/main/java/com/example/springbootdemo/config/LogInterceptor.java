@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Component
 public class LogInterceptor implements HandlerInterceptor {
-    private final static String LOG_ID = "log_id";
+    private final static String LOG_ID = "logId";
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
